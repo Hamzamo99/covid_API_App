@@ -1,0 +1,101 @@
+###
+//Test de recuperation d'un centre par le nom de la sa ville (PUBLIC) 
+GET http://localhost:8080/public/centres?ville=Test2
+
+###
+//Test d'inscription à un centre (PUBLIC)
+POST http://localhost:8080/public/inscriptions
+Content-Type: application/json
+
+{
+    "nom": "Nom",
+    "prenom": "Prénom",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "dateInscription": "2023-09-23",
+    "centre": {
+        "id": 1
+    }
+}
+
+################################################################
+
+###
+//Test de creation d'un nouvau centre (SUPER ADMIN)
+POST http://localhost:8080/superadmin/centres
+Content-Type: application/json
+
+{
+    "nom": "Second centre",
+    "adresse": "123 Rue de Test",
+    "ville": "Test1"
+}
+
+###
+//Test de lecture d'un centre par l'Id (SUPER ADMIN)
+GET http://localhost:8080/superadmin/centres/1
+
+###
+//Lecture de tous les centres (SUPER ADMIN)
+GET http://localhost:8080/superadmin/centres
+
+###
+//Modification d'un centre (SUPER ADMIN)
+PUT http://localhost:8080/superadmin/centres/2
+Content-Type: application/json
+
+{
+    "nom": "Deuxieme centre",
+    "adresse": "123 Rue de Test",
+    "ville": "Biella"
+}
+
+###
+//Test de suppression d'un centre par l'Id
+DELETE http://localhost:8080/superadmin/centres/1
+
+
+################################################################
+
+###
+//Test de creation d'un nouvau administrateur (SUPER ADMIN)
+POST http://localhost:8080/superadmin/administrateurs
+Content-Type: application/json
+
+{
+    "nom": "Hamza",
+    "prenom":"Dupont",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 2
+    }
+}
+
+###
+//Test de lecture d'un administrateur par l'Id (SUPER ADMIN)
+GET http://localhost:8080/superadmin/administrateurs/1
+
+###
+//Lecture de tous les administrateurs (SUPER ADMIN)
+GET http://localhost:8080/superadmin/administrateurs
+
+###
+//Modification d'un administrateur (SUPER ADMIN)
+PUT http://localhost:8080/superadmin/administrateurs/2
+Content-Type: application/json
+
+{
+    "nom": "Hamza",
+    "prenom":"Dupont",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+###
+//Test de suppression d'un administarteur par l'Id
+DELETE http://localhost:8080/superadmin/administrateurs/2
+

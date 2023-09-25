@@ -1,0 +1,47 @@
+@startuml
+
+class Centre {
+  + id: Long
+  + nom: String
+  + adresse: String
+  + ville: String
+  + inscriptions: List<Inscription>
+  + administrateurs: List<AdministrateurCentre>
+  + medecins: List<Medecin>
+}
+
+class Inscription {
+  + id: Long
+  + nom: String
+  + prenom: String
+  + email: String
+  + telephone: String
+  + dateInscription: Date
+  + centreId: Centre
+  + vaccinePass: Medecin
+}
+
+class AdministrateurCentre {
+  + id: Long
+  + nom: String
+  + prenom: String
+  + email: String
+  + telephone: String
+  + centreId: Centre
+}
+
+class Medecin {
+  + id: Long
+  + nom: String
+  + prenom: String
+  + email: String
+  + telephone: String
+  + centreId: Centre
+}
+
+Centre "1" -- "1..*" Inscription
+Centre "1" -- "1..*" AdministrateurCentre
+Centre "1" -- "1..*" Medecin
+
+@enduml
+
