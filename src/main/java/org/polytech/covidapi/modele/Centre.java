@@ -1,5 +1,4 @@
 package org.polytech.covidapi.modele;
-
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.CascadeType;
@@ -24,15 +23,15 @@ public class Centre {
     
     //Chaque centre peut avoir plusieurs inscriptions
     @OneToMany(mappedBy = "centre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference // Centre gère la relation
+    @JsonManagedReference //Centre gère la relation
     private List<Inscription> inscriptions;
 
     @OneToMany(mappedBy = "centre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference // Centre gère la relation
+    @JsonManagedReference //Centre gère la relation
     private List<AdministrateurCentre> administrateurs;
 
     @OneToMany(mappedBy = "centre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonManagedReference // Centre gère la relation
+    @JsonManagedReference //Centre gère la relation
     private List<Medecin> medecins;
 
     public Long getId() {

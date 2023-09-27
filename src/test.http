@@ -8,8 +8,8 @@ POST http://localhost:8080/public/inscriptions
 Content-Type: application/json
 
 {
-    "nom": "Nom",
-    "prenom": "Prénom",
+    "nom": "MO",
+    "prenom": "Hamza",
     "email": "email@example.com",
     "telephone": "123456789",
     "dateInscription": "2023-09-23",
@@ -17,6 +17,7 @@ Content-Type: application/json
         "id": 1
     }
 }
+
 
 ################################################################
 
@@ -26,7 +27,7 @@ POST http://localhost:8080/superadmin/centres
 Content-Type: application/json
 
 {
-    "nom": "Second centre",
+    "nom": "Premier centre",
     "adresse": "123 Rue de Test",
     "ville": "Test1"
 }
@@ -45,7 +46,7 @@ PUT http://localhost:8080/superadmin/centres/2
 Content-Type: application/json
 
 {
-    "nom": "Deuxieme centre",
+    "nom": "centre",
     "adresse": "123 Rue de Test",
     "ville": "Biella"
 }
@@ -98,4 +99,68 @@ Content-Type: application/json
 ###
 //Test de suppression d'un administarteur par l'Id
 DELETE http://localhost:8080/superadmin/administrateurs/2
+
+
+################################################################
+
+###
+//Test de creation d'un nouvau médecin (ADMIN)
+POST http://localhost:8080/admin/medecins
+Content-Type: application/json
+
+{
+    "nom": "Rosa",
+    "prenom":"Rosa",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+###
+//Test de lecture de l'ensemble des médecin par l'Id de leur centre (ADMIN)
+GET http://localhost:8080/admin/medecins?centreId=1
+
+
+###
+//Modification d'un medecin (ADMIN)
+PUT http://localhost:8080/admin/medecins/1
+Content-Type: application/json
+
+{
+    "nom": "Hamza",
+    "prenom":"MO",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+
+
+################################################################
+
+###
+//Test de lecture des inscriptions liées à un centre (ADMIN)
+GET http://localhost:8080/admin/inscriptions?centreId=1
+
+
+###
+//Test de l'effacement d'une inscription suivant son Id (ADMIN)
+DELETE http://localhost:8080/admin/inscriptions/1
+
+
+
+################################################################
+
+###
+//Test de recherche d'une personne par son nom dans l'inscription (On retourne l'inscription) (MEDECIN)
+GET http://localhost:8080/admin/medecin/rechercherPersonne?nom=MO
+
+###
+//Test de validation de la vaccination d'une personne par son Id d'inscription (MEDECIN)
+PUT http://localhost:8080/admin/medecin/validerVaccination/1?medecinId=1
+
 

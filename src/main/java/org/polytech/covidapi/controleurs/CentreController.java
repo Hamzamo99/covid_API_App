@@ -1,6 +1,5 @@
 package org.polytech.covidapi.controleurs;
 import java.util.List;
-
 import org.polytech.covidapi.modele.Centre;
 import org.polytech.covidapi.repositories.CentreRepository;
 import org.polytech.covidapi.services.CentreService;

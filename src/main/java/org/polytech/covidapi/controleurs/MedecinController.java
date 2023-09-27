@@ -1,7 +1,5 @@
 package org.polytech.covidapi.controleurs;
-
 import java.util.List;
-
 import org.polytech.covidapi.modele.Inscription;
 import org.polytech.covidapi.modele.Medecin;
 import org.polytech.covidapi.repositories.InscriptionRepository;
@@ -15,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
+@RestController
 public class MedecinController {
     
 
@@ -28,7 +28,6 @@ public class MedecinController {
         this.medecinRepository = medecinRepository;
         this.inscriptionRepository = inscriptionRepository;
         this.medecinService = medecinService;
-
     }
 
     @PostMapping("/admin/medecins")
@@ -43,10 +42,9 @@ public class MedecinController {
         return medecinRepository.findByCentreId(centreId);
     }
 
-    @PutMapping("/admin/medecins/{id}")
-    public Medecin updateMedecin(@PathVariable Long id, @RequestBody Medecin medecin) {
-        // Code pour mettre à jour les informations du médecin avec l'ID spécifié
-        return medecinRepository.save(medecin);
+    @PutMapping("/{id}")
+    public ResponseEntity<Medecin> updateMedecin(@PathVariable Long id, @RequestBody Medecin medecin) {
+        return medecinService.updateMedecin(id, medecin);
     }
 
     // Recherche d'une personne par son nom dans l'inscription
@@ -55,10 +53,10 @@ public class MedecinController {
         return inscriptionRepository.findByNom(nom);
     }
 
-    // Valider la vaccination d'une personne par son Id d'inscription
     @PutMapping("admin/medecin/validerVaccination/{id}")
-    public ResponseEntity<?> validerVaccination(@PathVariable Long id, @RequestBody Medecin medecin) {
-        return medecinService.validerVaccination(id, medecin);
+    public ResponseEntity<?> validerVaccination(@PathVariable Long id, @RequestParam Long medecinId) {
+        return medecinService.validerVaccination(id, medecinId);
     }
+
 
 }

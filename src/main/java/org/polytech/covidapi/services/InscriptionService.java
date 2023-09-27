@@ -1,7 +1,5 @@
 package org.polytech.covidapi.services;
-
 import java.util.List;
-
 import org.polytech.covidapi.modele.Inscription;
 
 public interface InscriptionService {

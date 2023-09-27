@@ -1,6 +1,5 @@
 package org.polytech.covidapi.services;
 import java.util.List;
-
 import org.polytech.covidapi.modele.Centre;
 import org.polytech.covidapi.repositories.CentreRepository;
 import org.springframework.beans.factory.annotation.Autowired;

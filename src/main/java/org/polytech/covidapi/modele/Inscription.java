@@ -1,16 +1,14 @@
 package org.polytech.covidapi.modele;
-
 import java.time.LocalDate;
-
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Inscription {
@@ -33,6 +31,7 @@ public class Inscription {
     @JsonBackReference //Inscription fait référence à Centre
     private Centre centre;
 
+    @OneToOne
     private Medecin vaccinePass;
 
     public Long getId() {

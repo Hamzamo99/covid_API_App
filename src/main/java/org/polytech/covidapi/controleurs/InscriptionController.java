@@ -1,7 +1,5 @@
 package org.polytech.covidapi.controleurs;
-
 import java.util.List;
-
 import org.polytech.covidapi.modele.Inscription;
 import org.polytech.covidapi.services.InscriptionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +27,7 @@ public class InscriptionController {
 
     @PostMapping("/public/inscriptions")
     public Inscription creerInscription(@RequestBody Inscription inscription) {
-        // Appeler le service pour créer l'inscription
+        //On appelle le service pour créer l'inscription
         return inscriptionService.creerInscription(inscription);
     }
     

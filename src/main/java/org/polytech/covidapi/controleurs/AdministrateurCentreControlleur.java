@@ -1,7 +1,5 @@
 package org.polytech.covidapi.controleurs;
-
 import java.util.List;
-
 import org.polytech.covidapi.modele.AdministrateurCentre;
 import org.polytech.covidapi.modele.Inscription;
 import org.polytech.covidapi.repositories.AdministrateurCentreRepository;
@@ -31,7 +29,7 @@ public class AdministrateurCentreControlleur {
 
     @PostMapping("/superadmin/administrateurs")
     public AdministrateurCentre createAdministrateurCentre(@RequestBody AdministrateurCentre administrateurCentre) {
-        // Code pour créer un nouvel administrateur du centre et le sauvegarder en base de données
+        //Code pour créer un nouvel administrateur du centre et le sauvegarder en base de données
         return administrateurCentreRepository.save(administrateurCentre);
     }
 
@@ -42,13 +40,13 @@ public class AdministrateurCentreControlleur {
 
     @PutMapping("/superadmin/administrateurs/{id}")
         public AdministrateurCentre updateAdministrateurCentre(@PathVariable Long id, @RequestBody AdministrateurCentre administrateurCentre) {
-        // Code pour mettre à jour l'administrateur du centre avec l'ID spécifié
+        //Code pour mettre à jour l'administrateur du centre avec l'ID spécifié
         return administrateurCentreRepository.save(administrateurCentre);
     }
 
     @DeleteMapping("/superadmin/administrateurs/{id}")
     public void deleteAdministrateurCentre(@PathVariable Long id) {
-        // Code pour supprimer l'administrateur du centre avec l'ID spécifié
+        //Code pour supprimer l'administrateur du centre avec l'ID spécifié
         administrateurCentreRepository.deleteById(id);
     }
 
@@ -60,13 +58,13 @@ public class AdministrateurCentreControlleur {
 
     @GetMapping("/admin/inscriptions")
     public List<Inscription> getInscriptionsByCentre(@RequestParam Long centreId) {
-        // Code pour récupérer la liste des réservations effectuées pour le centre spécifié
+        //Code pour récupérer la liste des réservations effectuées pour le centre spécifié
         return inscriptionRepository.findByCentreId(centreId);
     }
 
     @DeleteMapping("/admin/inscriptions/{id}")
     public void deleteInscription(@PathVariable Long id) {
-        // Code pour supprimer l'inscription avec l'ID spécifié
+        //Code pour supprimer l'inscription avec l'ID spécifié
         inscriptionRepository.deleteById(id);
     }
 
