@@ -34,33 +34,33 @@ public class CentreController {
     }
 
     //Création d'un nouveau centre 
-    @PostMapping("/superadmin/centres")
+    @PostMapping("api/superadmin/centres")
     @ResponseBody
     public Centre creerCentre(@RequestBody Centre centre) {
         return centreService.creerCentre(centre);
     }
 
     //Lécture d'un centre par l'Id
-    @GetMapping("superadmin/centres/{id}")
+    @GetMapping("api/superadmin/centres/{id}")
     public Centre getCentreById(@PathVariable Long id) {
         return centreRepository.findById(id).orElse(null);
     }
 
     //Lécture de tous les centre presents dans la base de données
-    @GetMapping("superadmin/centres")
+    @GetMapping("api/superadmin/centres")
     public List<Centre> getAllCentres() {
         return centreRepository.findAll();
     }
 
     //Update d'un nouveau centre par l'Id
-    @PutMapping("superadmin/centres/{id}")
+    @PutMapping("api/superadmin/centres/{id}")
     public Centre updateCentre(@PathVariable Long id, @RequestBody Centre centre) {
         centre.setId(id);
         return centreRepository.save(centre);
     }
 
     //Effacement d'un centre par l'Id
-    @DeleteMapping("superadmin/centres/{id}")
+    @DeleteMapping("api/superadmin/centres/{id}")
     public void deleteCentre(@PathVariable Long id) {
         centreRepository.deleteById(id);
     }
