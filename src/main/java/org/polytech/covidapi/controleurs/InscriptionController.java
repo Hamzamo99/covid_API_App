@@ -25,7 +25,7 @@ public class InscriptionController {
         return inscriptionService.rechercherInscriptionsParCentre(centreId);
     }
 
-    @PostMapping("/public/inscriptions")
+    @PostMapping("api/public/inscriptions")
     public Inscription creerInscription(@RequestBody Inscription inscription) {
         //On appelle le service pour créer l'inscription
         return inscriptionService.creerInscription(inscription);

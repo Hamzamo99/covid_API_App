@@ -1,10 +1,10 @@
 ###
 //Test de recuperation d'un centre par le nom de sa ville (PUBLIC) 
-GET http://localhost:8080/public/centres?ville=Test2
+GET http://localhost:8080/api/public/centres?ville=Paris
 
 ###
 //Test d'inscription à un centre (PUBLIC)
-POST http://localhost:8080/public/inscriptions
+POST http://localhost:8080/api/public/inscriptions
 Content-Type: application/json
 
 {
@@ -23,13 +23,13 @@ Content-Type: application/json
 
 ###
 //Test de creation d'un nouvau centre (SUPER ADMIN)
-POST http://localhost:8080/superadmin/centres
+POST http://localhost:8080/api/superadmin/centres
 Content-Type: application/json
 
 {
-    "nom": "Troisieme centre",
+    "nom": "Deuxieme centre",
     "adresse": "123 Rue de Test",
-    "ville": "Test3"
+    "ville": "Paris"
 }
 
 ###

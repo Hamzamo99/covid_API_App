@@ -28,7 +28,7 @@ public class CentreController {
     }
 
     //Recherche des centres d'une ville choisie
-    @GetMapping("/public/centres")
+    @GetMapping("api/public/centres")
     public List<Centre> rechercherCentresParVille(@RequestParam String ville) {
         return centreService.rechercherCentresParVille(ville);
     }
