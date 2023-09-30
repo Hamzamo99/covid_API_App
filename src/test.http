@@ -27,7 +27,7 @@ POST http://localhost:8080/api/superadmin/centres
 Content-Type: application/json
 
 {
-    "nom": "Centre Kill",
+    "nom": "Centre Billoooooo",
     "adresse": "123 Rue de Test",
     "ville": "Strasbourg"
 }
@@ -60,16 +60,16 @@ DELETE http://localhost:8080/superadmin/centres/1
 
 ###
 //Test de creation d'un nouvau administrateur (SUPER ADMIN)
-POST http://localhost:8080/superadmin/administrateurs
+POST http://localhost:8080/api/superadmin/administrateurs
 Content-Type: application/json
 
 {
-    "nom": "Hamza",
+    "nom": "Gio",
     "prenom":"Dupont",
     "email": "email@example.com",
     "telephone": "123456789",
     "centre": {
-        "id": 1
+        "id": 2
     }
 }
 
@@ -83,11 +83,11 @@ GET http://localhost:8080/api/superadmin/administrateurs
 
 ###
 //Modification d'un administrateur (SUPER ADMIN)
-PUT http://localhost:8080/api/superadmin/administrateurs/2
+PUT http://localhost:8080/api/superadmin/administrateurs/1
 Content-Type: application/json
 
 {
-    "nom": "Hamza",
+    "nom": "Hamzaaaaaa",
     "prenom":"Dupont",
     "email": "email@example.com",
     "telephone": "123456789",

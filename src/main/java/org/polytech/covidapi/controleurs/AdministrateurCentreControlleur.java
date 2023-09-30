@@ -5,6 +5,7 @@ import org.polytech.covidapi.modele.Inscription;
 import org.polytech.covidapi.repositories.AdministrateurCentreRepository;
 import org.polytech.covidapi.repositories.InscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import java.util.Optional;
+
 
 @RestController
 public class AdministrateurCentreControlleur {
@@ -44,10 +47,29 @@ public class AdministrateurCentreControlleur {
     }
 
     @PutMapping("api/superadmin/administrateurs/{id}")
-        public AdministrateurCentre updateAdministrateurCentre(@PathVariable Long id, @RequestBody AdministrateurCentre administrateurCentre) {
-        //Code pour mettre à jour l'administrateur du centre avec l'ID spécifié
-        return administrateurCentreRepository.save(administrateurCentre);
+    public ResponseEntity<AdministrateurCentre> updateAdministrateurCentre(@PathVariable Long id, @RequestBody AdministrateurCentre administrateurCentre) {
+        Optional<AdministrateurCentre> adminTrouveOptional = administrateurCentreRepository.findById(id);
+
+        if (adminTrouveOptional.isPresent()) {
+            AdministrateurCentre adminTrouve = adminTrouveOptional.get();
+
+            // Mettez à jour les champs de l'administrateur avec les nouvelles valeurs
+            adminTrouve.setNom(administrateurCentre.getNom());
+            adminTrouve.setPrenom(administrateurCentre.getPrenom());
+            adminTrouve.setEmail(administrateurCentre.getEmail());
+            adminTrouve.setTelephone(administrateurCentre.getTelephone());
+            adminTrouve.setCentre(administrateurCentre.getCentre());
+
+            // Sauvegardez les modifications dans la base de données
+            AdministrateurCentre updatedAdmin = administrateurCentreRepository.save(adminTrouve);
+
+            return ResponseEntity.ok(updatedAdmin);
+        } else {
+            // Si l'administrateur avec l'ID spécifié n'a pas été trouvé, retournez une réponse 404
+            return ResponseEntity.notFound().build();
+        }
     }
+
 
     @DeleteMapping("api/superadmin/administrateurs/{id}")
     public void deleteAdministrateurCentre(@PathVariable Long id) {
