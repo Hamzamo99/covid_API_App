@@ -27,42 +27,47 @@ public class AdministrateurCentreControlleur {
         this.inscriptionRepository = inscriptionRepository;
     }
 
-    @PostMapping("/superadmin/administrateurs")
+    @PostMapping("api/superadmin/administrateurs")
     public AdministrateurCentre createAdministrateurCentre(@RequestBody AdministrateurCentre administrateurCentre) {
         //Code pour créer un nouvel administrateur du centre et le sauvegarder en base de données
         return administrateurCentreRepository.save(administrateurCentre);
     }
 
-    @GetMapping("/superadmin/administrateurs/{id}")
+    @GetMapping("api/superadmin/administrateurs/{id}")
     public AdministrateurCentre getAdministrateurCentreById(@PathVariable Long id) {
         return administrateurCentreRepository.findById(id).orElse(null);
     }
 
-    @PutMapping("/superadmin/administrateurs/{id}")
+    @GetMapping("api/superadmin/administrateurs/centre/{centreId}")
+    public List<AdministrateurCentre> getAdministrateursByCentreId(@PathVariable Long centreId) {
+        return administrateurCentreRepository.findAdminsByCentreId(centreId);
+    }
+
+    @PutMapping("api/superadmin/administrateurs/{id}")
         public AdministrateurCentre updateAdministrateurCentre(@PathVariable Long id, @RequestBody AdministrateurCentre administrateurCentre) {
         //Code pour mettre à jour l'administrateur du centre avec l'ID spécifié
         return administrateurCentreRepository.save(administrateurCentre);
     }
 
-    @DeleteMapping("/superadmin/administrateurs/{id}")
+    @DeleteMapping("api/superadmin/administrateurs/{id}")
     public void deleteAdministrateurCentre(@PathVariable Long id) {
         //Code pour supprimer l'administrateur du centre avec l'ID spécifié
         administrateurCentreRepository.deleteById(id);
     }
 
     //Lécture de tous les administrateurs presents dans la base de données
-    @GetMapping("superadmin/administrateurs")
+    @GetMapping("api/superadmin/administrateurs")
     public List<AdministrateurCentre> getAllAdministrators() {
         return administrateurCentreRepository.findAll();
     }
 
-    @GetMapping("/admin/inscriptions")
+    @GetMapping("api/admin/inscriptions")
     public List<Inscription> getInscriptionsByCentre(@RequestParam Long centreId) {
         //Code pour récupérer la liste des réservations effectuées pour le centre spécifié
         return inscriptionRepository.findByCentreId(centreId);
     }
 
-    @DeleteMapping("/admin/inscriptions/{id}")
+    @DeleteMapping("api/admin/inscriptions/{id}")
     public void deleteInscription(@PathVariable Long id) {
         //Code pour supprimer l'inscription avec l'ID spécifié
         inscriptionRepository.deleteById(id);

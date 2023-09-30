@@ -27,14 +27,14 @@ POST http://localhost:8080/api/superadmin/centres
 Content-Type: application/json
 
 {
-    "nom": "Deuxieme centre",
+    "nom": "Centre Kill",
     "adresse": "123 Rue de Test",
-    "ville": "Paris"
+    "ville": "Strasbourg"
 }
 
 ###
 //Test de lecture d'un centre par l'Id (SUPER ADMIN)
-GET http://localhost:8080/superadmin/centres/1
+GET http://localhost:8080/api/superadmin/centres/1
 
 ###
 //Lecture de tous les centres (SUPER ADMIN)
@@ -52,7 +52,7 @@ Content-Type: application/json
 }
 
 ###
-//Test de suppression d'un centre par l'Id
+//Test de suppression d'un centre par l'Id (SUPER ADMIN)
 DELETE http://localhost:8080/superadmin/centres/1
 
 
@@ -69,21 +69,21 @@ Content-Type: application/json
     "email": "email@example.com",
     "telephone": "123456789",
     "centre": {
-        "id": 2
+        "id": 1
     }
 }
 
 ###
-//Test de lecture d'un administrateur par l'Id (SUPER ADMIN)
-GET http://localhost:8080/superadmin/administrateurs/1
+//Test de lecture des administrateurs par l'Id du centre (SUPER ADMIN)
+GET http://localhost:8080/api/superadmin/administrateurs/centre/1
 
 ###
 //Lecture de tous les administrateurs (SUPER ADMIN)
-GET http://localhost:8080/superadmin/administrateurs
+GET http://localhost:8080/api/superadmin/administrateurs
 
 ###
 //Modification d'un administrateur (SUPER ADMIN)
-PUT http://localhost:8080/superadmin/administrateurs/2
+PUT http://localhost:8080/api/superadmin/administrateurs/2
 Content-Type: application/json
 
 {
@@ -98,7 +98,7 @@ Content-Type: application/json
 
 ###
 //Test de suppression d'un administarteur par l'Id
-DELETE http://localhost:8080/superadmin/administrateurs/2
+DELETE http://localhost:8080/api/superadmin/administrateurs/2
 
 
 ################################################################
