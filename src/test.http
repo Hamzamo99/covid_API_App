@@ -1,3 +1,40 @@
+// Test de création d'un nouveau superadmin (SUPER ADMIN)
+POST http://localhost:8080/api/superadmins
+Content-Type: application/json
+
+{
+    "nom": "John",
+    "prenom": "Doe",
+    "email": "johndoe@example.com",
+    "telephone": "1234567890"
+}
+
+###
+// Test de lecture d'un superadmin par l'Id (SUPER ADMIN)
+GET http://localhost:8080/api/superadmins/2
+
+###
+// Lecture de tous les superadmin (SUPER ADMIN)
+GET http://localhost:8080/api/superadmins
+
+###
+// Modification d'un superadmin (SUPER ADMIN)
+PUT http://localhost:8080/api/superadmins/1
+Content-Type: application/json
+
+{
+    "nom": "Johnnnn",
+    "prenom": "Doe",
+    "email": "johndoe@example.com",
+    "telephone": "1234567890"
+}
+
+###
+// Test de suppression d'un superadmin par l'Id (SUPER ADMIN)
+DELETE http://localhost:8080/api/superadmins/1
+
+###################################################################
+
 ###
 //Test de recuperation d'un centre par le nom de sa ville (PUBLIC) 
 GET http://localhost:8080/api/public/centres?ville=Paris
