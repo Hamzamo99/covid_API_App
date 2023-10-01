@@ -24,6 +24,10 @@ public class AdministrateurCentre {
     @JsonBackReference //AdministrateurCentre fait référence à Centre
     private Centre centre;
 
+    @ManyToOne
+    @JoinColumn(name = "role_id") // Associez un rôle unique à chaque AdministrateurCentre
+    private Role role;
+
     public Long getId() {
         return id;
     }
@@ -71,6 +75,16 @@ public class AdministrateurCentre {
     public void setCentre(Centre centre) {
         this.centre = centre;
     }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
+    }
+
+    
 
     
 }

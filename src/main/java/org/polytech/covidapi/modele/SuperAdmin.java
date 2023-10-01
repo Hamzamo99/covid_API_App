@@ -1,5 +1,4 @@
 package org.polytech.covidapi.modele;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -8,24 +7,18 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Medecin {
+public class SuperAdmin {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nom;
     private String prenom;
     private String email;
     private String telephone;
 
     @ManyToOne
-    @JoinColumn(name = "centre_id")
-    @JsonBackReference //Medecin fait référence à Centre
-    private Centre centre;
-
-    @ManyToOne
-    @JoinColumn(name = "role_id") // Associez un rôle unique à chaque Medecin
+    @JoinColumn(name = "role_id") // Associez un rôle unique à chaque SuperAdmin
     private Role role;
 
     public Long getId() {
@@ -68,14 +61,6 @@ public class Medecin {
         this.telephone = telephone;
     }
 
-    public Centre getCentre() {
-        return centre;
-    }
-
-    public void setCentre(Centre centre) {
-        this.centre = centre;
-    }
-
     public Role getRole() {
         return role;
     }
@@ -83,6 +68,13 @@ public class Medecin {
     public void setRole(Role role) {
         this.role = role;
     }
+
+
     
 }
+
+
+
+
+
 

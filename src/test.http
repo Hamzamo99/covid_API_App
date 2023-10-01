@@ -27,7 +27,7 @@ POST http://localhost:8080/api/superadmin/centres
 Content-Type: application/json
 
 {
-    "nom": "Centre Billoooooo",
+    "nom": "Centre Meneau",
     "adresse": "123 Rue de Test",
     "ville": "Strasbourg"
 }
@@ -69,7 +69,7 @@ Content-Type: application/json
     "email": "email@example.com",
     "telephone": "123456789",
     "centre": {
-        "id": 2
+        "id": 1
     }
 }
 
@@ -105,7 +105,7 @@ DELETE http://localhost:8080/api/superadmin/administrateurs/2
 
 ###
 //Test de creation d'un nouvau médecin (ADMIN)
-POST http://localhost:8080/admin/medecins
+POST http://localhost:8080/api/admin/medecins
 Content-Type: application/json
 
 {
@@ -120,12 +120,13 @@ Content-Type: application/json
 
 ###
 //Test de lecture de l'ensemble des médecin par l'Id de leur centre (ADMIN)
-GET http://localhost:8080/admin/medecins?centreId=1
-
+GET http://localhost:8080/api/admin/medecins?centreId=1
 
 ###
+DELETE  http://localhost:8080/api/admin/medecins/1
+###
 //Modification d'un medecin (ADMIN)
-PUT http://localhost:8080/admin/medecins/1
+PUT http://localhost:8080/api/admin/medecins/1
 Content-Type: application/json
 
 {
