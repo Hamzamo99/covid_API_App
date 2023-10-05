@@ -1,7 +1,6 @@
 package org.polytech.covidapi.modele;
-import java.time.LocalDate;
+import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,8 +22,7 @@ public class Inscription {
     private String email;
     private String telephone;
     
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private LocalDate dateInscription;
+    private Date dateInscription;
 
     @ManyToOne
     @JoinColumn(name = "centre_id")
@@ -74,11 +72,11 @@ public class Inscription {
         this.telephone = telephone;
     }
 
-    public LocalDate getDateInscription() {
+    public Date getDateInscription() {
         return dateInscription;
     }
 
-    public void setDateInscription(LocalDate dateInscription) {
+    public void setDateInscription(Date dateInscription) {
         this.dateInscription = dateInscription;
     }
 

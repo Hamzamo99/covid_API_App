@@ -1,0 +1,38 @@
+################################################################
+
+###
+//Test de creation d'un nouvau centre (SUPER ADMIN)
+POST http://localhost:8080/api/admin/superadmin/centre
+Content-Type: application/json
+
+{
+    "nom": "Test",
+    "adresse": "123 Rue de Test",
+    "ville": "Nancy"
+}
+
+###
+//Test de lecture d'un centre par l'Id (SUPER ADMIN)
+GET http://localhost:8080/api/admin/superadmin/centre/1
+
+###
+//Lecture de tous les centres (SUPER ADMIN)
+GET http://localhost:8080/api/admin/superadmin/centre
+
+###
+//Modification d'un centre (SUPER ADMIN)
+PUT http://localhost:8080/api/admin/superadmin/centre/2
+Content-Type: application/json
+
+{
+    "nom": "centre",
+    "adresse": "123 Rue de Test",
+    "ville": "Biella"
+}
+
+###
+//Test de suppression d'un centre par l'Id (SUPER ADMIN)
+DELETE http://localhost:8080/api/admin/superadmin/centre/2
+
+
+################################################################

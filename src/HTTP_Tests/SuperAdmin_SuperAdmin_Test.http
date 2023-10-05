@@ -1,0 +1,36 @@
+// Test de création d'un nouveau superadmin (SUPER ADMIN)
+POST http://localhost:8080/api/admin/superadmin
+Content-Type: application/json
+
+{
+    "nom": "John",
+    "prenom": "Doe",
+    "email": "johndoe@example.com",
+    "telephone": "1234567890"
+}
+
+###
+// Test de lecture d'un superadmin par l'Id (SUPER ADMIN)
+GET http://localhost:8080/api/admin/superadmin/2
+
+###
+// Lecture de tous les superadmin (SUPER ADMIN)
+GET http://localhost:8080/api/admin/superadmin
+
+###
+// Modification d'un superadmin (SUPER ADMIN)
+PUT http://localhost:8080/api/admin/superadmin/2
+Content-Type: application/json
+
+{
+    "nom": "John",
+    "prenom": "Doe",
+    "email": "johndoe@example.com",
+    "telephone": "1234567890"
+}
+
+###
+// Test de suppression d'un superadmin par l'Id (SUPER ADMIN)
+DELETE http://localhost:8080/api/admin/superadmin/1
+
+###################################################################

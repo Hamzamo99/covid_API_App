@@ -24,9 +24,7 @@ public class Medecin {
     @JsonBackReference //Medecin fait référence à Centre
     private Centre centre;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id") // Associez un rôle unique à chaque Medecin
-    private Role role;
+    private String role = "MEDECIN";
 
     public Long getId() {
         return id;
@@ -76,11 +74,11 @@ public class Medecin {
         this.centre = centre;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
     

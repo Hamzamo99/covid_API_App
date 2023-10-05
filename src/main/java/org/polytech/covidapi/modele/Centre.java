@@ -28,7 +28,7 @@ public class Centre {
 
     @OneToMany(mappedBy = "centre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference //Centre gère la relation
-    private List<AdministrateurCentre> administrateurs;
+    private List<Administrateur> administrateurs;
 
     @OneToMany(mappedBy = "centre", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference //Centre gère la relation
@@ -74,11 +74,11 @@ public class Centre {
         this.inscriptions = inscriptions;
     }
 
-    public List<AdministrateurCentre> getAdministrateurs() {
+    public List<Administrateur> getAdministrateurs() {
         return administrateurs;
     }
 
-    public void setAdministrateurs(List<AdministrateurCentre> administrateurs) {
+    public void setAdministrateurs(List<Administrateur> administrateurs) {
         this.administrateurs = administrateurs;
     }
 

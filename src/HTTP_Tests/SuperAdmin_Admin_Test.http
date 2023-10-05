@@ -1,0 +1,44 @@
+###
+//Test de creation d'un nouvau administrateur (SUPER ADMIN)
+POST http://localhost:8080/api/admin/superadmin/administrateur
+Content-Type: application/json
+
+{
+    "nom": "Bill",
+    "prenom":"Dupont",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+###
+//Test de lecture des administrateurs par l'Id du centre (SUPER ADMIN)
+GET http://localhost:8080/api/admin/superadmin/administrateur/centre/1
+
+###
+//Lecture de tous les administrateurs (SUPER ADMIN)
+GET http://localhost:8080/api/admin/superadmin/administrateur
+
+###
+//Modification d'un administrateur (SUPER ADMIN)
+PUT http://localhost:8080/api/admin/superadmin/administrateur/1
+Content-Type: application/json
+
+{
+    "nom": "Hamzaaaaaa",
+    "prenom":"Dupont",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+###
+//Test de suppression d'un administarteur par l'Id
+DELETE http://localhost:8080/api/admin/superadmin/administrateur/2
+
+
+################################################################

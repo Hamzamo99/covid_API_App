@@ -1,0 +1,24 @@
+###################################################################
+
+###
+//Test de recuperation d'un centre par le nom de sa ville (PUBLIC) 
+GET http://localhost:8080/api/public/centres?ville=Nancy
+
+###
+//Test d'inscription à un centre (PUBLIC)
+POST http://localhost:8080/api/public/inscriptions
+Content-Type: application/json
+
+{
+    "nom": "MOUAOUIA",
+    "prenom": "Hamza",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "dateInscription": "2023-09-23",
+    "centre": {
+        "id": 1
+    }
+}
+
+
+################################################################

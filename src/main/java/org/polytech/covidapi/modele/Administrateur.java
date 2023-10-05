@@ -8,7 +8,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
-public class AdministrateurCentre {
+public class Administrateur {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,9 +24,7 @@ public class AdministrateurCentre {
     @JsonBackReference //AdministrateurCentre fait référence à Centre
     private Centre centre;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id") // Associez un rôle unique à chaque AdministrateurCentre
-    private Role role;
+    private String role = "ADMIN";
 
     public Long getId() {
         return id;
@@ -76,15 +74,12 @@ public class AdministrateurCentre {
         this.centre = centre;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
-
-    
-
     
 }

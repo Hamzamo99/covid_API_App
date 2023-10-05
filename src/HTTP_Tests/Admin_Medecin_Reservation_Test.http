@@ -1,0 +1,51 @@
+################################################################
+
+###
+//Test de creation d'un nouvau médecin (ADMIN)
+POST http://localhost:8080/api/admin/administrateur/medecin
+Content-Type: application/json
+
+{
+    "nom": "Rosa",
+    "prenom":"Rosa",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+###
+//Test de lecture de l'ensemble des médecin par l'Id de leur centre (ADMIN)
+GET http://localhost:8080/api/admin/administrateur/medecin?centreId=1
+
+###
+//Modification d'un medecin (ADMIN)
+PUT http://localhost:8080/api/admin/administrateur/medecin/1
+Content-Type: application/json
+
+{
+    "nom": "Hamza",
+    "prenom":"MO",
+    "email": "email@example.com",
+    "telephone": "123456789",
+    "centre": {
+        "id": 1
+    }
+}
+
+
+################################################################
+
+###
+//Test de lecture des inscriptions liées à un centre (ADMIN)
+GET http://localhost:8080/api/admin/administrateur/inscription?centreId=1
+
+
+###
+//Test de l'effacement d'une inscription suivant son Id (ADMIN)
+DELETE http://localhost:8080/api/admin/administrateur/inscription/1
+
+
+
+################################################################

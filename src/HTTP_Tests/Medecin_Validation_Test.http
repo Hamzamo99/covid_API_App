@@ -1,0 +1,9 @@
+################################################################
+
+###
+//Test de recherche d'une personne par son nom dans l'inscription (On retourne l'inscription) (MEDECIN)
+GET http://localhost:8080/api/admin/medecin/rechercherPersonne?nom=MOUAOUIA
+
+###
+//Test de validation de la vaccination d'une personne par son Id d'inscription (MEDECIN)
+PUT http://localhost:8080/api/admin/medecin/validerVaccination/1?medecinId=1

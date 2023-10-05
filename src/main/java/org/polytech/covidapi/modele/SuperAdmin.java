@@ -3,8 +3,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 
 @Entity
 public class SuperAdmin {
@@ -17,9 +15,7 @@ public class SuperAdmin {
     private String email;
     private String telephone;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id") // Associez un rôle unique à chaque SuperAdmin
-    private Role role;
+    private String role = "SUPERADMIN"; //Le role est initiliasé avec la creation de l'objet SuperAdmin
 
     public Long getId() {
         return id;
@@ -61,11 +57,11 @@ public class SuperAdmin {
         this.telephone = telephone;
     }
 
-    public Role getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role role) {
+    public void setRole(String role) {
         this.role = role;
     }
 

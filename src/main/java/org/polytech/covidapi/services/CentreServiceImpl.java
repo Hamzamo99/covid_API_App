@@ -17,7 +17,7 @@ public class CentreServiceImpl implements CentreService {
 
     @Override
     public List<Centre> rechercherCentresParVille(String ville) {
-        return centreRepository.findByVille(ville);
+        return centreRepository.findByVilleIgnoreCase(ville);
     }
 
     @Override

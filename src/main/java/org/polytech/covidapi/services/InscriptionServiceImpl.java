@@ -31,7 +31,6 @@ public class InscriptionServiceImpl implements InscriptionService{
     }
 
     public Inscription creerInscription(Inscription inscription) {
-        // Pas besoin de conversion manuelle pour la date au format "yyyy-MM-dd"
 
         //On récupere l'ID du centre de l'inscription
         Long centreId = inscription.getCentre().getId();
