@@ -6,9 +6,9 @@ POST http://localhost:8080/api/admin/superadmin/centre
 Content-Type: application/json
 
 {
-    "nom": "Test",
+    "nom": "centre Euro",
     "adresse": "123 Rue de Test",
-    "ville": "Nancy"
+    "ville": "Strasbourg"
 }
 
 ###

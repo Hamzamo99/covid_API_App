@@ -39,7 +39,7 @@ Content-Type: application/json
 
 ###
 //Test de lecture des inscriptions liées à un centre (ADMIN)
-GET http://localhost:8080/api/admin/administrateur/inscription?centreId=1
+GET http://localhost:8080/api/admin/administrateur/inscription?centreId=3
 
 
 ###

@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 public interface CentreRepository extends JpaRepository<Centre, Long> {
 
-    @Query(value = "SELECT * FROM centre c WHERE c.ville ILIKE %:ville%", nativeQuery = true)
+    @Query(value = "SELECT * FROM centre c WHERE (:ville IS NULL OR c.ville ILIKE %:ville%)", nativeQuery = true)
     List<Centre> findByVilleIgnoreCase(@Param("ville") String ville);
     
 }
