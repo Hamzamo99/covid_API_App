@@ -1,4 +1,5 @@
 package org.polytech.covidapi.controleurs;
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 import org.polytech.covidapi.modele.Administrateur;
@@ -8,8 +9,11 @@ import org.polytech.covidapi.repositories.AdministrateurRepository;
 import org.polytech.covidapi.repositories.CentreRepository;
 import org.polytech.covidapi.repositories.SuperAdminRepository;
 import org.polytech.covidapi.services.CentreService;
+import org.polytech.covidapi.services.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,13 +31,15 @@ public class SuperAdminController {
     private CentreRepository centreRepository;
     private CentreService centreService;
     private AdministrateurRepository administrateurRepository;
+    private CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public SuperAdminController (SuperAdminRepository superAdminRepository,CentreRepository centreRepository,AdministrateurRepository administrateurRepository,CentreService centreService) {
+    public SuperAdminController (SuperAdminRepository superAdminRepository,CentreRepository centreRepository,AdministrateurRepository administrateurRepository,CentreService centreService,CustomUserDetailsService customUserDetailsService) {
         this.administrateurRepository = administrateurRepository;
         this.centreRepository = centreRepository;
         this.centreService = centreService;
         this.superAdminRepository = superAdminRepository;
+        this.customUserDetailsService = customUserDetailsService;
     }
 
     // Opération de création d'un SuperAdmin (Create) (OK)
@@ -79,6 +85,20 @@ public class SuperAdminController {
     public List<SuperAdmin> getAllSuperAdmins() {
         return superAdminRepository.findAll();
     }
+
+   @GetMapping("/api/login/superadmin")
+    public UserDetails getInfosSuperAdmin(Principal principal) {
+
+        String nom = principal.getName();
+        UserDetails User = customUserDetailsService.loadUserByUsername(nom);
+        if (User != null) {
+            return User;
+        } else {
+            // Gérez le cas où l'utilisateur n'est pas trouvé
+            throw new UsernameNotFoundException("Utilisateur non trouvé avec le nom d'utilisateur : " + nom);
+        }
+    }
+
 
     //Création d'un nouveau centre par un SuperAdmin (OK)
     @PostMapping("api/admin/superadmin/centre") 

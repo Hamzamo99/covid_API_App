@@ -3,15 +3,16 @@ POST http://localhost:8080/api/admin/superadmin
 Content-Type: application/json
 
 {
-    "nom": "John",
+    "nom": "test",
     "prenom": "Doe",
     "email": "johndoe@example.com",
-    "telephone": "1234567890"
+    "telephone": "1234567890",
+    "password":"test",
 }
 
 ###
 // Test de lecture d'un superadmin par l'Id (SUPER ADMIN)
-GET http://localhost:8080/api/admin/superadmin/2
+GET http://localhost:8080/api/admin/superadmin/1
 
 ###
 // Lecture de tous les superadmin (SUPER ADMIN)

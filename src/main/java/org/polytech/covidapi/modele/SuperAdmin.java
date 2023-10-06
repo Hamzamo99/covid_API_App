@@ -14,6 +14,15 @@ public class SuperAdmin {
     private String prenom;
     private String email;
     private String telephone;
+    private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
     private String role = "SUPERADMIN"; //Le role est initiliasé avec la creation de l'objet SuperAdmin
 
