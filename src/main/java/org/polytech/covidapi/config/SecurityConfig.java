@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -20,18 +21,19 @@ public class SecurityConfig {
 
     private static final Logger log = LoggerFactory.getLogger(SecurityConfig.class);
     
-     private final CustomUserDetailsService customUserDetailsService;
+    private final CustomUserDetailsService customUserDetailsService;
 
     public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
-        this.customUserDetailsService = customUserDetailsService;
-    }
+         this.customUserDetailsService = customUserDetailsService;
+     }
 
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
       http
         .httpBasic(Customizer.withDefaults())
-        .authorizeHttpRequests((authz) -> authz.requestMatchers("/public/**").permitAll()
+        .authorizeHttpRequests((authz) -> 
+        authz.requestMatchers(AntPathRequestMatcher.antMatcher("/api/public/**")).permitAll()
                 .anyRequest().authenticated())
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//On rend les session stateless
         return http.build();

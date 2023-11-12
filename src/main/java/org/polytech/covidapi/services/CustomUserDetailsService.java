@@ -1,10 +1,8 @@
 package org.polytech.covidapi.services;
-import java.util.Collections;
 import java.util.List;
 
 import org.polytech.covidapi.modele.SuperAdmin;
 import org.polytech.covidapi.repositories.SuperAdminRepository;
-import org.springframework.security.config.core.GrantedAuthorityDefaults;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

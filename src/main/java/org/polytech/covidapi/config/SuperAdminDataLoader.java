@@ -1,5 +1,4 @@
 package org.polytech.covidapi.config;
-
 import org.polytech.covidapi.modele.SuperAdmin;
 import org.polytech.covidapi.repositories.SuperAdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
