@@ -2,7 +2,7 @@
 
 ###
 //Test de recuperation d'un centre par le nom de sa ville (PUBLIC) 
-GET http://localhost:8080/api/public/centres?ville=
+GET http://localhost:8080/api/public/centres?ville=Nancy
 
 ###
 //Test d'inscription à un centre (PUBLIC)

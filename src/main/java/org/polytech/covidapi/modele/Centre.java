@@ -34,6 +34,15 @@ public class Centre {
     @JsonManagedReference //Centre gère la relation
     private List<Medecin> medecins;
 
+    public Centre(Long id, String nom, String adresse, String ville) {
+        this.id = id;
+        this.nom = nom;
+        this.adresse = adresse;
+        this.ville = ville;
+    }
+    public Centre() {
+    }
+
     public Long getId() {
         return id;
     }
