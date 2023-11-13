@@ -7,20 +7,38 @@ import org.polytech.covidapi.repositories.InscriptionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+// import io.micrometer.core.instrument.Counter;
+// import io.micrometer.core.instrument.MeterRegistry;
+
 @Service
 public class InscriptionServiceImpl implements InscriptionService{
     
     private final InscriptionRepository inscriptionRepository;
     private final CentreRepository centreRepository;
+    // private final Counter rendezVousCounter;
     
 
+    // @Autowired
+    // public InscriptionServiceImpl(
+    //         InscriptionRepository inscriptionRepository,
+    //         CentreRepository centreRepository,
+    //         MeterRegistry meterRegistry
+    // ) {
+    //     this.inscriptionRepository = inscriptionRepository;
+    //     this.centreRepository = centreRepository;
+    //     this.rendezVousCounter = Counter.builder("rendezvous.enregistres")
+    //         .description("Nombre de rendez-vous enregistrés")
+    //         .register(meterRegistry);
+    // }
+
     @Autowired
-    public InscriptionServiceImpl(InscriptionRepository inscriptionRepository, CentreRepository centreRepository) {
+    public InscriptionServiceImpl(
+            InscriptionRepository inscriptionRepository,
+            CentreRepository centreRepository
+    ) {
         this.inscriptionRepository = inscriptionRepository;
         this.centreRepository = centreRepository;
-      
     }
-
     @Override
     public List<Inscription> rechercherInscriptionsParCentre(Long centreId) {
         Centre centre = centreRepository.findById(centreId).orElse(null);
@@ -49,6 +67,9 @@ public class InscriptionServiceImpl implements InscriptionService{
 
         //On enregistre l'inscription
         Inscription savedInscription = inscriptionRepository.save(inscription);
+
+        // On incrémente la métrique
+        // rendezVousCounter.increment();
 
         //On renvoie l'inscription enregistrée
         return savedInscription;

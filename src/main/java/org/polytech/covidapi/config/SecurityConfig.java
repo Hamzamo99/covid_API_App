@@ -8,11 +8,9 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @Configuration
@@ -25,17 +23,21 @@ public class SecurityConfig {
 
     public SecurityConfig(CustomUserDetailsService customUserDetailsService) {
          this.customUserDetailsService = customUserDetailsService;
-     }
-
+    }
 
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http, UserDetailsService userDetailsService) throws Exception {
-      http
-        .httpBasic(Customizer.withDefaults())
-        .authorizeHttpRequests((authz) -> 
-        authz.requestMatchers(AntPathRequestMatcher.antMatcher("/api/public/**")).permitAll()
-                .anyRequest().authenticated())
-        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);//On rend les session stateless
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests(authorizeRequests ->
+                authorizeRequests
+                    .requestMatchers("/api/public/**").permitAll() // Autorise les requêtes publiques
+                    .anyRequest().authenticated() // Toutes les autres requêtes sont interdites
+            )
+            .httpBasic(Customizer.withDefaults())
+            .cors().disable()
+            .csrf().disable() // Désactivation de la protection CSRF
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS); // Rend les sessions Stateless
+
         return http.build();
     }
 
