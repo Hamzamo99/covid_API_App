@@ -6,7 +6,7 @@ COPY . /app
 
 RUN gradle build
 
-# Dockerfile pour le deuxième conteneur
+# Dockerfile pour le deuxième conteneur 
 FROM eclipse-temurin:17-jre-ubi9-minimal
 
 RUN mkdir /opt/app
